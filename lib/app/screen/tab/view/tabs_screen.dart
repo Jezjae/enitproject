@@ -1,5 +1,4 @@
 import 'package:enitproject/app/routes/app_pages.dart';
-import 'package:enitproject/app/screen/favorite_list/view/favorite_screen.dart';
 import 'package:enitproject/app/screen/mypage/view/mypage_screen.dart';
 import 'package:enitproject/app/screen/tab/controller/tabs_controller.dart';
 import 'package:enitproject/const/color.dart';

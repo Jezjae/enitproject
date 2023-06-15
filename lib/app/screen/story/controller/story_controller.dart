@@ -86,18 +86,13 @@ class StoryController extends GetxController{
   void setOpenPlay(int index) async {
     String? mp3Path = storyList[index].mp3Path;
     audio = Audio('assets/${mp3Path}',
-
-      ///백그라운드랑 상단 바 안에 표시해줄 데이터 넣는 것
       metas: Metas(
         title:  storyList[index].title,
         artist: storyList[index].addressSearch,
         image: MetasImage.network('${storyList[index].image}'), //can be MetasImage.network
       ),
-
     );
     assetsAudioPlayer.refresh();
-
-    ///오디오 재생
     await assetsAudioPlayer.value.open(
       audio,
       showNotification: true,
@@ -105,25 +100,6 @@ class StoryController extends GetxController{
       autoStart: false,
     );
 
-    void updatePlay(int index) async {
-      if (isPlaying.value) {
-        _audioPlayer.value.pause();
-        //_assetsAudioPlayer.value.pause();
-      } else {
-        String? mp3Path = storyList[index].mp3Path;
-        await _audioPlayer.value.play(AssetSource(mp3Path!));
-        // await _assetsAudioPlayer.value.open(
-        //   Audio('assets/${mp3Path}'),
-        //   showNotification: true,
-        // );
-
-        BottomPopupPlayerController.to.isPopup(true);
-        storyIndex = index;
-      }
-    }
-
-
-    ///하단팝업
     BottomPopupPlayerController.to.isPopup(true);
     storyIndex = index;
   }

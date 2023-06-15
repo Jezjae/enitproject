@@ -94,4 +94,18 @@ class PreviewController extends GetxController{
     StoryController.to.isPlaying(false);
     StoryController.to.isPlaying.refresh();
   }
+
+  ///관심목록 리스트랑 이야기 리스트의 인덱스가 달라서
+  ///선택된 리스트 인덱스번째의 키값과 이야기의 키값 대조해서 같은 키값을 가진 이야기리스트의 인덱스를 찾아서
+  ///int 'storykey'로 뺴줌
+  int storykey(int index) {
+    late int key;
+    for (int i = 0; i < StoryController.to.storyList.length; i++) {
+      if (previewStoryList[index].storyPlayListKey ==
+          StoryController.to.storyList[i].storyPlayListKey) {
+        key = i;
+      }
+    }
+    return key;
+  }
 }
